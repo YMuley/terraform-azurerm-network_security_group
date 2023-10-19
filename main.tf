@@ -1,6 +1,3 @@
-provider "azurerm" {
-  features {}
-}
 
 
 # --------- NetworkSecurityGroup ------------
@@ -14,7 +11,7 @@ resource "azurerm_network_security_group" "network_security_group" {
     dynamic "security_rule" {
         for_each = each.value.security_rule
         content {
-            name                       = security_rule.value.security_rule_name
+            name                       = security_rule.value.name
             priority                   = security_rule.value.priority
             direction                  = security_rule.value.direction
             access                     = security_rule.value.access
